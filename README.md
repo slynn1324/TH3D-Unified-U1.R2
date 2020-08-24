@@ -1,3 +1,21 @@
+# Customized TH3D Firmware
+
+Configured for My Ender 5 Pro with the following:
+
+- EZABL probe
+- EZOUT filament sensor
+- Scroll Long Filenames Enabled
+- SD Alpha Sort Enabled
+- Boot Screen & Custom Boot Screen enabled
+
+
+...and it still fits!
+```
+RAM:   [===       ]  34.6% (used 5668 bytes from 16384 bytes)
+Flash: [==========]  95.0% (used 123552 bytes from 130048 bytes)
+```
+
+
 **This firmware is maintained by TH3D. The goal is an easy to use firmware for 3D printers that we have added support for.**
 
 **The issues queue has been disabled as some people do not understand it's for firmware problems and not technical support.**
