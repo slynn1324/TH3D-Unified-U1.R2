@@ -378,6 +378,15 @@
   #include "ubl.h"
 #endif
 
+
+// SL
+
+#include "SLCustom.h"
+SLCustom slCustom;
+
+// END SL
+
+
 #if ENABLED(CNC_COORDINATE_SYSTEMS)
   int8_t active_coordinate_system = -1; // machine space
   float coordinate_system[MAX_COORDINATE_SYSTEMS][XYZ];
@@ -15685,6 +15694,10 @@ void setup() {
   //#if ENABLED(SDSUPPORT)
 	  //if (!card.cardOK) card.initsd();
   //#endif
+
+  // SL
+  slCustom.setup();
+  // END SL
 }
 
 /**
@@ -15778,5 +15791,10 @@ void loop() {
     }
   }
   endstops.event_handler();
+
+  // SL 
+  slCustom.loop();
+  // END SL
+
   idle();
 }

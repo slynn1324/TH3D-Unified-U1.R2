@@ -431,15 +431,15 @@
 //===========================================================================
 // Creality Ender 5 Options - Select 'Sanguino 1284p' from Tools > Board
 //===========================================================================
-//#define ENDER5
+#define ENDER5
 
 // If you are using our EZOut V1/V2 (connected to LCD header) filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
 // Do NOT ever connect our filament sensor without the supplied adapter board.
-//#define EZOUT_ENABLE
+#define EZOUT_ENABLE
 
 // EZABL Probe Mounts (Ender 5 can use most of the same mounts as CR-10)
-//#define ENDER5_OEM
+#define ENDER5_OEM
 //#define CR10_OEM
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
@@ -449,7 +449,7 @@
 //#define CUSTOM_PROBE
 
 // If you have the new Ender 5 or Ender 5 Pro Model that has the new 800steps/mm Z leadscrew uncomment the below option to set the correct steps/mm
-//#define ENDER5_NEW_LEADSCREW
+#define ENDER5_NEW_LEADSCREW
 
 //=================================================================================================
 // README - THE BELOW SETTINGS ARE ONLY FOR USING THE CR-10S DUAL BOARD WITH THE ENDER 5
@@ -1024,12 +1024,13 @@
 
 // Use your own printer name
 //#define USER_PRINTER_NAME "CHANGE ME" 
+#define USER_PRINTER_NAME "Ender 5 Pro"
 
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
 //#define SLOWER_HOMING
 
 // Using a Creality Silent Board? Enable the below option to set the correct driver setting for those boards
-//#define TMC_CREALITY_BOARD
+#define TMC_CREALITY_BOARD
 
 // BOOT SCREEN OPTIONS -----------------------------
 
@@ -1116,5 +1117,15 @@
 
 #define UNIFIED_VERSION "TH3D U1.R2.B5"
 #include "Configuration_backend.h"
+
+// SL
+
+#define SCROLL_LONG_FILENAMES
+#define SDCARD_SORT_ALPHA
+
+#define SHOW_BOOTSCREEN
+#define SHOW_CUSTOM_BOOTSCREEN
+
+// END SL
 
 #endif // CONFIGURATION_H
