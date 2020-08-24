@@ -15,6 +15,12 @@ RAM:   [===       ]  34.6% (used 5668 bytes from 16384 bytes)
 Flash: [==========]  95.0% (used 123552 bytes from 130048 bytes)
 ```
 
+----------
+
+VVV original below VVV
+
+----------
+
 
 **This firmware is maintained by TH3D. The goal is an easy to use firmware for 3D printers that we have added support for.**
 
