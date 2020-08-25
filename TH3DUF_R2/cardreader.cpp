@@ -31,6 +31,8 @@
 #include "language.h"
 #include "printcounter.h"
 
+#include <Stream.h>
+
 #if ENABLED(POWER_LOSS_RECOVERY)
   #include "power_loss_recovery.h"
 #endif
@@ -251,6 +253,41 @@ void CardReader::printFilename() {
 
   SERIAL_EOL();
 }
+
+// SL
+#if ENABLED(SL_CUSTOM_ADDITIONS)
+void CardReader::printFilenameTo(Stream* s){
+  if (file.isOpen()) {
+    char dosFilename[FILENAME_LENGTH];
+    file.getFilename(dosFilename);
+    
+    getfilename(0, dosFilename);
+    if(longFilename[0]){
+      s->print(longFilename);
+    } else {
+      s->print(dosFilename);
+    }
+    s->print(' ');
+
+    // // SERIAL_ECHO(dosFilename);
+    // #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
+    //   getfilename(0, dosFilename);
+    //   if (longFilename[0]) {
+    //     s->print(longFilename);
+    //     // SERIAL_ECHO(' ');
+    //     // SERIAL_ECHO(longFilename);
+    //   }
+    // #else
+    //   s->print(dosFilename);
+    //   s->print(' ');
+    // #endif
+  }
+  else
+    s->print("NA");
+    s->print(' ');
+}
+#endif
+// END SL
 
 void CardReader::initsd() {
   cardOK = false;

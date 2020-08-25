@@ -380,10 +380,10 @@
 
 
 // SL
-
+#if ENABLED(SL_CUSTOM_ADDITIONS)
 #include "SLCustom.h"
 SLCustom slCustom;
-
+#endif
 // END SL
 
 
@@ -15696,7 +15696,9 @@ void setup() {
   //#endif
 
   // SL
+  #if ENABLED(SL_CUSTOM_ADDITIONS)
   slCustom.setup();
+  #endif
   // END SL
 }
 
@@ -15793,7 +15795,9 @@ void loop() {
   endstops.event_handler();
 
   // SL 
+  #if ENABLED(SL_CUSTOM_ADDITIONS)
   slCustom.loop();
+  #endif
   // END SL
 
   idle();

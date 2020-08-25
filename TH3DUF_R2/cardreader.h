@@ -33,6 +33,8 @@
 
 #include "SdFile.h"
 
+#include <Stream.h>
+
 class CardReader {
 public:
   CardReader();
@@ -58,6 +60,11 @@ public:
   void getStatus();
   void printingHasFinished();
   void printFilename();
+  // SL
+  #if ENABLED(SL_CUSTOM_ADDITIONS)
+  void printFilenameTo(Stream* s);
+  #endif
+  // END SL
 
   #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
     void printLongPath(char *path);
