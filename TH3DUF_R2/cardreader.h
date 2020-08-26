@@ -62,7 +62,7 @@ public:
   void printFilename();
   // SL
   #if ENABLED(SL_CUSTOM_ADDITIONS)
-  void printFilenameTo(Stream* s);
+  void printFilenameTo(char* out, uint8_t size);
   #endif
   // END SL
 

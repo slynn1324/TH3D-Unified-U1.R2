@@ -256,18 +256,27 @@ void CardReader::printFilename() {
 
 // SL
 #if ENABLED(SL_CUSTOM_ADDITIONS)
-void CardReader::printFilenameTo(Stream* s){
+// void CardReader::getFilename(char* out){
+//   if ( file.isOpen() ){
+//     file.getFilename(out);
+//   }
+// }
+
+void CardReader::printFilenameTo(char* out, uint8_t size){
   if (file.isOpen()) {
     char dosFilename[FILENAME_LENGTH];
     file.getFilename(dosFilename);
     
     getfilename(0, dosFilename);
     if(longFilename[0]){
-      s->print(longFilename);
+      snprintf(out, size, "%s", longFilename);
+      // s->print(longFilename);
     } else {
-      s->print(dosFilename);
+      snprintf(out, size, "%s", dosFilename);
+      // strncpy(out, dosFilename, size);
+      // s->print(dosFilename);
     }
-    s->print(' ');
+    // s->print(' ');
 
     // // SERIAL_ECHO(dosFilename);
     // #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
@@ -283,8 +292,10 @@ void CardReader::printFilenameTo(Stream* s){
     // #endif
   }
   else
-    s->print("NA");
-    s->print(' ');
+    snprintf(out, size, "%s", "NA");
+    // strcpy(out, "NA");
+    // s->print("NA");
+    // s->print(' ');
 }
 #endif
 // END SL
