@@ -4,7 +4,7 @@
 #include <SLSoftwareSerial.h>
 #include "temperature.h"
 #include "cardreader.h"
-#include "circularqueue.h"
+#include "SLCircularQueue.h"
 
 #define SLCUSTOM_MSG_HELLO "Hello\n"
 #define SLCUSTOM_BAUD_RATE 115200
@@ -12,7 +12,7 @@
 #define SLCUSTOM_BUF_SIZE 512
 #define SLCUSTOM_CONVERT_BUF_SIZE 16 // max characters for a number
 
-// ONE WAY SERIAL - TX ONLY ON FREE PIN (requires soldering to unused header next to capacitor)
+// ONE WAY SERIAL - TX ONLY ON FREE PIN (requires soldering to unused header next to capacitor near center of board)
 #define TX_PIN 29
 
 class SLCustom {
@@ -23,7 +23,7 @@ class SLCustom {
   unsigned long now = 0;
 
   // output buffer, we only want to write 1 char per loop so we don't steal too much time from the main loop
-  CircularQueue<char,255> buffer;
+  SLCircularQueue<char,1024> buffer;
 
   // use to convert numbers to string
   // this might be large... but be safe... (unless we run out of ram)
@@ -32,10 +32,11 @@ class SLCustom {
 
   public:
     SLCustom() : ser(TX_PIN) {
-      ser.begin(SLCUSTOM_BAUD_RATE);
     }
 
-    void setup(){}
+    void setup(){
+      ser.begin(SLCUSTOM_BAUD_RATE);
+    }
 
     void loop(){
       now = millis();
@@ -46,6 +47,11 @@ class SLCustom {
 
       // maybe write one character from the buffer to the serial output this loop
       writeFromBuffer();
+    }
+
+    void m118(const char* string_arg){
+      pushToBuffer("M ");
+      pushToBuffer(string_arg);
     }
 
     void pushToBuffer(char c){
@@ -93,12 +99,6 @@ class SLCustom {
     void tone(const uint16_t &duration, const uint16_t &frequency=0) {
       // Command: B {duration} {frequency}
 
-      // runtime is 2+5+1+5+1 bytes is 144us@115200 baud?  check math. 
-      // ser.print("B ");
-      // ser.print(duration);
-      // ser.print(' ');
-      // ser.print(frequency);
-      // ser.print('\n');
       pushToBuffer("B ");
       pushToBuffer(duration);
       pushToBuffer(' ');

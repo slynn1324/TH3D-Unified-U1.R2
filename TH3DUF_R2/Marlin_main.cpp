@@ -565,6 +565,8 @@ static millis_t stepper_inactive_time = (DEFAULT_STEPPER_DEACTIVE_TIME) * 1000UL
 #elif PIN_EXISTS(BEEPER)
   Buzzer buzzer;
   #define BUZZ(d,f) buzzer.tone(d, f)
+#elif ENABLED(SL_CUSTOM_ADDITIONS)
+  #define BUZZ(d,f) slCustom.tone(d, f);
 #else
   #define BUZZ(d,f) NOOP
 #endif
@@ -9653,6 +9655,11 @@ inline void gcode_M118() {
   if (hasE) SERIAL_ECHO_START();
   if (hasA) SERIAL_ECHOPGM("// ");
   SERIAL_ECHOLN(p);
+
+  #if ENABLED(SL_CUSTOM_ADDITIONS)
+    // tack on to the M118 Serial print command to also message the add-on ESP listener
+    slCustom.m118(parser.string_arg);
+  #endif
 }
 
 /**
