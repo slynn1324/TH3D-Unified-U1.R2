@@ -1027,7 +1027,7 @@
 #define USER_PRINTER_NAME "Ender 5 Pro"
 
 // If your printer is homing to the endstops hard uncomment this to change the homing speed/divisor to make it less aggressive.
-//#define SLOWER_HOMING
+#define SLOWER_HOMING
 
 // Using a Creality Silent Board? Enable the below option to set the correct driver setting for those boards
 #define TMC_CREALITY_BOARD
