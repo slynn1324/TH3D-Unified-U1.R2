@@ -1123,6 +1123,7 @@
 #define SCROLL_LONG_FILENAMES
 #define SDCARD_SORT_ALPHA
 
+// modification in ultralcd_impl_DOGM.h to supress the Marlin boot screen
 #define SHOW_BOOTSCREEN
 #define SHOW_CUSTOM_BOOTSCREEN
 #define SL_CUSTOM_ADDITIONS

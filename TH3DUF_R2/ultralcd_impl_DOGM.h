@@ -321,6 +321,8 @@ void lcd_printPGM_utf(const char *str, uint8_t n=LCD_WIDTH) {
   void lcd_bootscreen() {
     #if ENABLED(SHOW_CUSTOM_BOOTSCREEN)
       lcd_custom_bootscreen();
+      // SL - disable marlin boot screen. Don't distribute - Marlin doesn't like this.
+      return;
     #endif
 
     constexpr uint8_t offy =
