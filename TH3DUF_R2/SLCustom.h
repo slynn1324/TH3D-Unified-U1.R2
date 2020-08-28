@@ -17,8 +17,8 @@
 #define TX_PIN 29
 
 struct sl_tone_t {
-  uint16_t duration;
   uint16_t frequency;
+  uint16_t duration;
 };
 
 
@@ -129,7 +129,7 @@ class SLCustom {
 
       // we have to buffer the tones..because we might be in the middle of writing another command out and they can't intermix
       // however, we can push them out as fast as possible, and they will queue up and play on the remote end
-      sl_tone_t tone = { duration, frequency };
+      sl_tone_t tone = { frequency, duration };
       tone_buffer.enqueue(tone);
     }
 
