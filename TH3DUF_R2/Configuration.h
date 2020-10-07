@@ -439,7 +439,7 @@
 #define EZOUT_ENABLE
 
 // EZABL Probe Mounts (Ender 5 can use most of the same mounts as CR-10)
-#define ENDER5_OEM
+//#define ENDER5_OEM
 //#define CR10_OEM
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
@@ -1081,7 +1081,7 @@
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html If used with a 1284P board the bootscreen will be disabled to save space.
 // NOTE: This is not supported on the Wanhao i3 Plus due to the LCD limitations.
 // NOTE: If you want to automate the leveling process our EZABL kits do this for you. Check them out here: http://EZABL.TH3DStudio.com
-//#define MANUAL_MESH_LEVELING
+#define MANUAL_MESH_LEVELING
 
 // POWER LOSS RECOVERY -----------------------------
 // Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
@@ -1120,12 +1120,12 @@
 
 // SL
 
-#define SCROLL_LONG_FILENAMES
+// #define SCROLL_LONG_FILENAMES
 #define SDCARD_SORT_ALPHA
 
 // modification in ultralcd_impl_DOGM.h to supress the Marlin boot screen
-#define SHOW_BOOTSCREEN
-#define SHOW_CUSTOM_BOOTSCREEN
+// #define SHOW_BOOTSCREEN
+// #define SHOW_CUSTOM_BOOTSCREEN
 #define SL_CUSTOM_ADDITIONS
 
 // END SL
